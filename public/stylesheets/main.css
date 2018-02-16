@@ -1,0 +1,13 @@
+a {
+    color: white !important;
+}
+
+.container-main {
+    padding-top: 15px;
+    padding-left: 30px;
+}
+
+.to-do-icons {
+    float: right;
+    cursor: pointer;
+}

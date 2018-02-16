@@ -1,0 +1,36 @@
+@(toDoList: List[models.ToDo], subTitle: String)
+
+<div class="col-sm-7">
+    <h1><strong>@subTitle</strong></h1>
+    @if(toDoList.isEmpty()) {
+        <h1>There is nothing here :'(</h1>
+    } else {
+        @for(toDo <- toDoList) {
+            <div class="card text-white bg-secondary mb-3" style="max-width: 20rem;">
+                <div class="card-header">
+                    <a style="color: white !important;" target="_blank" href=@("http://localhost:9000/todo/" + toDo.getId())>
+                        <strong>@toDo.getTitle()</strong>
+                    </a>
+                    @if(toDo.isComplete()) {
+                        <small> (Completed)</small>
+                    }
+                    <a href=@("http://localhost:9000/todo/delete/" + toDo.getId())>
+                        <img class="to-do-icons" alt="Delete" src=@routes.Assets.at("icons/delete.png")>
+                    </a>
+                    @if(toDo.isComplete() == false) {
+                        <a href=@("http://localhost:9000/todo/complete/" + toDo.getId())>
+                            <img class="to-do-icons" alt="Mark Complete" src=@routes.Assets.at("icons/complete.png")>
+                        </a>
+                        <a href=@("http://localhost:9000/todo/edit/" + toDo.getId())>
+                            <img class="to-do-icons" alt="Edit" src=@routes.Assets.at("icons/edit.png")>
+                        </a>
+                    }
+                </div>
+                <div class="card-body">
+                    <p>@toDo.getTask()</p>
+                </div>
+                <div class="card-footer">@toDo.getAuthor()</div>
+            </div>
+        }
+    }
+</div>

@@ -1,0 +1,83 @@
+@(title: String, sidebar: Boolean, content: Html)
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href=@routes.Assets.at("stylesheets/bootstrap.min.css")>
+        <link rel="stylesheet" href=@routes.Assets.at("stylesheets/superhero-bootstrap.min.css")>
+        <link rel="stylesheet" href=@routes.Assets.at("stylesheets/main.css")>
+        <title>@title</title>
+    </head>
+    <body>
+        <div class="container-fluid container-main">
+            <div class="row">
+                <div class="col-sm-5">
+                    <a href="http://localhost:9000">
+                        <button type="button" class="btn btn-primary btn-lg btn-block">
+                            <strong>Home</strong>
+                        </button>
+                    </a>
+                    @if(sidebar == true) {
+                        <br/>
+                        <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
+                            <div class="card-header">Search</div>
+                            <div class="card-body">
+                                <form method="GET" action="@routes.ToDoController.search()">
+                                    @helper.CSRF.formField
+                                    <input class="form-control input-sm" maxlength="50" name="title" type="text" placeholder="By Title">
+                                    <br/>
+                                    <textarea class="form-control input-sm" name="task" type="text" placeholder="By Task"></textarea>
+                                    <br/>
+                                    <input class="form-control input-sm" maxlength="50" name="author" type="text" placeholder="By Author">
+                                    <br/>
+                                    <button class="btn btn-primary btn-lg btn-block" type="submit">Search</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
+                            <div class="card-header">New To-Do List</div>
+                            <div class="card-body">
+                                <form method="POST" action="@routes.ToDoController.addToDo()">
+                                    @helper.CSRF.formField
+                                    <div class="row">
+                                        <div class="col-sm-4">Title</div>
+                                        <div class="col-sm-8">
+                                            <input class="form-control input-sm" maxlength="50" name="title" type="text" placeholder="Short description of the task">
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-sm-4">Task</div>
+                                        <div class="col-sm-8">
+                                            <textarea class="form-control input-sm" minlength="1" name="task" type="text" placeholder="Details of the task "></textarea>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-sm-4">Author</div>
+                                        <div class="col-sm-8">
+                                            <input class="form-control input-sm" maxlength="50" name="author" type="text" placeholder="Your name (or initials)">
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                @content
+
+            </div>
+        </div>
+
+        <footer></footer>
+
+        <script src=@routes.Assets.at("javascripts/jquery-3.2.1.slim.min.js")></script>
+        <script src=@routes.Assets.at("javascripts/popper.min.js")></script>
+        <script src=@routes.Assets.at("javascripts/bootstrap.min.js")></script>
+    </body>
+</html>
