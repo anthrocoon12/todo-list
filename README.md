@@ -13,3 +13,6 @@ can be found in [License Folder](https://github.com/anthrocoon12/todo-list/tree/
 ## Run in Local
 This project use sbt build tool, make sure you have installed sbt on your machine.
 To run the project, simply clone the project and run command ```sbt run``` on the project folder.
+
+## See the web in action
+The web is hosted at [https://todo-list-cahya.herokuapp.com/](https://todo-list-cahya.herokuapp.com/). Please try it out :)
