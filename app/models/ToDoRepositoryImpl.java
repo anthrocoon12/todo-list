@@ -33,7 +33,6 @@ public class ToDoRepositoryImpl implements ToDoRepository {
     public void delete(Long id) {
         EntityManager em = jpaApi.em();
         ToDo toDo = em.find(ToDo.class, id);
-        System.out.println(toDo);
         if (toDo == null) {
             return;
         }

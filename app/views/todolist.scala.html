@@ -8,20 +8,20 @@
         @for(toDo <- toDoList) {
             <div class="card text-white bg-secondary mb-3" style="max-width: 20rem;">
                 <div class="card-header">
-                    <a style="color: white !important;" target="_blank" href=@("http://localhost:9000/todo/" + toDo.getId())>
+                    <a style="color: white !important;" target="_blank" href=@("/todo/" + toDo.getId())>
                         <strong>@toDo.getTitle()</strong>
                     </a>
                     @if(toDo.isComplete()) {
                         <small> (Completed)</small>
                     }
-                    <a href=@("http://localhost:9000/todo/delete/" + toDo.getId())>
+                    <a href=@("/todo/delete/" + toDo.getId())>
                         <img class="to-do-icons" alt="Delete" src=@routes.Assets.at("icons/delete.png")>
                     </a>
                     @if(toDo.isComplete() == false) {
-                        <a href=@("http://localhost:9000/todo/complete/" + toDo.getId())>
+                        <a href=@("/todo/complete/" + toDo.getId())>
                             <img class="to-do-icons" alt="Mark Complete" src=@routes.Assets.at("icons/complete.png")>
                         </a>
-                        <a href=@("http://localhost:9000/todo/edit/" + toDo.getId())>
+                        <a href=@("/todo/edit/" + toDo.getId())>
                             <img class="to-do-icons" alt="Edit" src=@routes.Assets.at("icons/edit.png")>
                         </a>
                     }
